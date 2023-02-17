@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="container col-12">
+        <div class="row">
+            <span>
+                <h4 appCabecerasTitulos20> {{title}} </h4>
+            </span>
+        </div>
+    </div>
+    <div class="container col-12">
+        <mat-form-field>
+            <input matInput [(ngModel)]="nombreBusqueda" placeholder="Buscar estudiantes por nombre">
+          </mat-form-field>
+          <button mat-raised-button color="primary"(click)="buscar()">Buscar</button>
+    </div>
+    <div class="container col-12">
+        <div class="row">
+                <table mat-table  [dataSource]="estudiantes">
+                    <ng-container matColumnDef="nombre">
+                        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                        <td mat-cell *matCellDef="let elemento"> {{elemento | nombreCompleto}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="edad">
+                        <th mat-header-cell *matHeaderCellDef> Email </th>
+                        <td mat-cell *matCellDef="let elemento"> {{elemento.email}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="matricula">
+                        <th mat-header-cell *matHeaderCellDef> Matricula </th>
+                        <td mat-cell *matCellDef="let elemento"> {{elemento.matricula}} </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+                    <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
+
+                </table>
+        </div>
+    </div>
+</div>
